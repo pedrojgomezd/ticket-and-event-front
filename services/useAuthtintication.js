@@ -19,14 +19,16 @@ function useProvideAuth() {
   const router = useRouter();
 
   const login = (email, password) =>
-    clientHttp
-      .post("../login", { email, password })
-      .then((data) => {
-        fetchUser();
-        router.push("/");
-        return data;
-      })
-      .catch((error) => console.log(error));
+    clientHttp.get("../sanctum/csrf-cookie").then(() =>
+      clientHttp
+        .post("../login", { email, password })
+        .then((data) => {
+          fetchUser();
+          router.push("/");
+          return data;
+        })
+        .catch((error) => console.log(error))
+    );
 
   const logout = (email, password) =>
     clientHttp.post("../logout").then((data) => {
