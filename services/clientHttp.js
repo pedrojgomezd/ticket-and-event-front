@@ -1,7 +1,7 @@
 import Axios from "axios";
 
 const clientHttp = Axios.create({
-  baseURL: "https://events-tickets.herokuapp.com/api",
+  baseURL: process.env.NEXT_PUBLIC_API_URL,
   withCredentials: true,
 });
 
