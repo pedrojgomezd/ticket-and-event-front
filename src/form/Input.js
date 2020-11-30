@@ -1,5 +1,5 @@
 import React, { InputHTMLAttributes } from "react";
-import IconElement from "../Common/IconElement";
+import IconElement from "../common/IconElement";
 
 const Input = ({ label, iconLeft, error, touched, ...props }) => {
   const hasError = error && touched;
