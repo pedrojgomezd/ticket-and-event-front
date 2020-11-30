@@ -1,7 +1,7 @@
 import Axios from "axios";
 
 const clientHttp = Axios.create({
-  baseURL: "https://api.psicol.test/api",
+  baseURL: "https://events-tickets.herokuapp.com",
   withCredentials: true,
 });
 
