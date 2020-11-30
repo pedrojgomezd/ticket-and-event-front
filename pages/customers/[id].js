@@ -32,7 +32,9 @@ const CustomersDetails = ({
   };
   const fetchCustomer = useCallback(async () => {
     setLoading(true);
-    const { data } = await clientHttp.get(`customers/${id}`);
+    const { data } = await clientHttp.get(
+      `customers/${id}?tickets?true&meetup=true`
+    );
     setCustomer(data);
     setLoading(false);
     setModalIsOpen(false);

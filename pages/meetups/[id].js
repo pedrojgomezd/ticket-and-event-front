@@ -34,7 +34,9 @@ const MeetupDetails = ({
 
   const fetchMeetup = useCallback(async () => {
     setLoading(true);
-    const { data } = await clientHttp.get(`meetups/${id}`);
+    const { data } = await clientHttp.get(
+      `meetups/${id}?tickets=true&customer=true`
+    );
     setMeetup(data);
     setLoading(false);
     setModalIsOpen(false);
@@ -48,9 +50,12 @@ const MeetupDetails = ({
 
   return (
     <Layouts title="Customer" {...{ loading }}>
-      <div>
-        <h3 className="text-2xl text-gray-700 font-semibold">
-          Meetup: {meetup.name}
+      <div
+        style={{ backgroundImage: `url('${meetup.cover_path}')` }}
+        className="h-64 flex items-center justify-center"
+      >
+        <h3 className="text-2xl text-white font-semibold bg-gray-700 p-2 bg-opacity-50">
+          {meetup.name}
         </h3>
       </div>
       <Table dataSource={[meetup]} columns={columnsMeetup} />
