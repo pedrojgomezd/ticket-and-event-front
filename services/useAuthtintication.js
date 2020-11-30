@@ -39,8 +39,8 @@ function useProvideAuth() {
     try {
       const { data, status } = await clientHttp.get("user");
       if (status !== 200) {
-        setUser(false);
         await clientHttp.get("../sanctum/csrf-cookie");
+        setUser(false);
         return;
       }
       setUser(data);
